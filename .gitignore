@@ -211,3 +211,7 @@ __marimo__/
 
 # Mac
 .DS_Store
+
+# Large JSON files
+all_commits.json
+recent_commits.json
