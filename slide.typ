@@ -18,8 +18,5 @@
 #pagebreak()
 #show_repo("xdslproject/xdsl")
 
-
-
-
 // Number of releases
 // High-level description

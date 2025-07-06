@@ -2,11 +2,11 @@ configfile: "default.yaml"
 
 rule all:
     input:
-        "repos/xdslproject/inconspiquous/avatars.done",
-        "repos/xdslproject/tenstorrent/avatars.done",
-        "repos/xdslproject/xdsl-asl/avatars.done",
-        "repos/xdslproject/xdsl-torch/avatars.done",
-        "repos/xdslproject/xdsl/avatars.done",
+        "repos/xdslproject/inconspiquous/slide.png",
+        "repos/xdslproject/tenstorrent/slide.png",
+        "repos/xdslproject/xdsl-asl/slide.png",
+        "repos/xdslproject/xdsl-torch/slide.png",
+        "repos/xdslproject/xdsl/slide.png",
 
 rule avatar:
     output: "avatars/{username}"
@@ -50,3 +50,27 @@ rule author_avatars:
     output: "repos/{org}/{name}/avatars.done"
     shell:
         "snakemake --cores all $(jq -r '.authors | .[] | \"avatars/\" + .' {input} | tr '\\n' ' ') && touch {output}"
+
+rule slide_typ:
+    input: "repos/{org}/{name}/avatars.done"
+    output: "repos/{org}/{name}/slide.typ"
+    shell:
+        """cat > {output} << EOL
+#import "../../../repo.typ": show_repo
+
+#set page(
+width: 13.33in,
+height: 7.5in,
+margin: 0.5in,
+)
+
+#set text(font: "Mona Sans", size: 20pt)
+
+#show_repo("{wildcards.org}/{wildcards.name}")
+EOL
+"""
+
+rule slide_png:
+    input: "repos/{org}/{name}/slide.typ"
+    output: "repos/{org}/{name}/slide.png"
+    shell: "typst compile repos/{wildcards.org}/{wildcards.name}/slide.typ --root . --format png"
