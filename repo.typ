@@ -1,9 +1,9 @@
 #let config = yaml("default.yaml")
 
 #let show_authors(repo) = {
-  if repo.authors.len() > 5 {
+  if repo.all_contributors.len() > 5 {
     // The icons + names don't all fit, drop names and tile space with circles
-    let item_count = repo.authors.len()
+    let item_count = repo.all_contributors.len()
     let container_width = 8cm
     let container_height = 10cm
     for cols in range(1, 100) {
@@ -21,7 +21,7 @@
               break
             }
 
-            let author = repo.authors.at(row * cols + col)
+            let author = repo.all_contributors.at(row * cols + col)
 
             box(clip: true, radius: avatar_size / 2, width: avatar_size, height: avatar_size, image(
               "avatars/" + author,
@@ -48,7 +48,7 @@
     let actual_rows = calc.ceil(item_count / actual_cols)
     let final_item_size = calc.min(container_width / actual_cols, container_height / actual_rows)
   } else {
-    for author in repo.authors {
+    for author in repo.all_contributors {
       stack(dir: ltr, box(clip: true, radius: 1cm, width: 2cm, height: 2cm, image("avatars/" + author)), align(
         horizon,
       )[#text(

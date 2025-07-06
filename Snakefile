@@ -40,16 +40,17 @@ rule repo:
     input:
         recent_commits="repos/{org}/{name}/recent_commits.json",
         info="repos/{org}/{name}/info.json",
+        all_commits="repos/{org}/{name}/all_commits.json",
         jq_script="repo.jq"
     output: "repos/{org}/{name}/repo.json"
     shell:
-        "jq -f repo.jq --slurp {input.recent_commits} {input.info} > {output}"
+        "jq -f repo.jq --slurp {input.recent_commits} {input.info} {input.all_commits} > {output}"
 
 rule author_avatars:
     input: "repos/{org}/{name}/repo.json"
     output: "repos/{org}/{name}/avatars.done"
     shell:
-        "snakemake --cores all $(jq -r '.authors | .[] | \"avatars/\" + .' {input} | tr '\\n' ' ') && touch {output}"
+        "snakemake --cores all $(jq -r '.all_contributors | .[] | \"avatars/\" + .' {input} | tr '\\n' ' ') && touch {output}"
 
 rule slide_typ:
     input: "repos/{org}/{name}/avatars.done"

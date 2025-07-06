@@ -1,7 +1,8 @@
 {
   "full_name": "xdslproject/xdsl-torch",
   "description": "An xDSL reimplementation of torch-mlir in O(1) code.",
-  "authors": [
+  "recent_contributor_count": 2,
+  "all_contributors": [
     "mamanain",
     "superlopuh"
   ],
