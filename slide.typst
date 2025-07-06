@@ -11,7 +11,7 @@
 
 #set text(font: "Mona Sans", size: 33pt)
 #pad[
-  *#repo.full_name #h(1fr) #repo.stars ⭐️*
+  *#repo.full_name * #h(1fr) #repo.stars ⭐️
 ]
 
 #set text(font: "Mona Sans", size: 20pt)
