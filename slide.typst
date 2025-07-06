@@ -19,7 +19,7 @@ _#repo.description _
 
 *#repo.stars ⭐️*
 
-#repo.commit_count commits
+*#repo.commit_count commits*
 
 #for author in repo.authors {
   stack(dir: ltr, box(clip: true, radius: 1cm, width: 2cm, height: 2cm, image("avatars/" + author)), align(
