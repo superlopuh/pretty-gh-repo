@@ -3,9 +3,10 @@ configfile: "default.yaml"
 rule all:
     input:
         "repos/xdslproject/inconspiquous/avatars.done",
-        "repos/xdslproject/xdsl/avatars.done",
+        "repos/xdslproject/tenstorrent/avatars.done",
+        "repos/xdslproject/xdsl-asl/avatars.done",
         "repos/xdslproject/xdsl-torch/avatars.done",
-        "repos/xdslproject/tenstorrent/avatars.done"
+        "repos/xdslproject/xdsl/avatars.done",
 
 rule avatar:
     output: "avatars/{username}"

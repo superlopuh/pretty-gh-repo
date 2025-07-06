@@ -6,7 +6,7 @@
 
 #set text(font: "Mona Sans", size: 20pt)
 
-#let repo = json("repos/xdslproject/tenstorrent/repo.json")
+#let repo = json("repos/xdslproject/xdsl-asl/repo.json")
 #let config = yaml("default.yaml")
 
 #set text(font: "Mona Sans", size: 33pt)

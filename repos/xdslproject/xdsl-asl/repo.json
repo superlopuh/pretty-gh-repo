@@ -1,0 +1,11 @@
+{
+  "full_name": "xdslproject/xdsl-asl",
+  "description": "Integrating asl in the xDSL/MLIR ecosystem",
+  "authors": [
+    "superlopuh",
+    "math-fehr",
+    "alastairreid"
+  ],
+  "commit_count": 100,
+  "stars": 4
+}
