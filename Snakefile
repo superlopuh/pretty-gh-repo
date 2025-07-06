@@ -25,3 +25,9 @@ rule repo:
     output: "repos/{org}/{name}/repo.json"
     shell:
         "jq -f repo.jq {input.recent_commits} > {output}"
+
+rule author_avatars:
+    input: "repos/{org}/{name}/repo.json"
+    output: "repos/{org}/{name}/avatars.done"
+    shell:
+        "snakemake --cores all $(jq -r '.authors | .[] | \"avatars/\" + . + \".png\"' {input} | tr '\\n' ' ') && touch {output}"
