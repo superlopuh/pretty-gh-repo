@@ -80,6 +80,7 @@
     In the last 6 months:
 
     - #repo.commit_count commits
+    - #repo.recent_contributor_count Contributors
   ][
     #show_authors(repo)
   ]
