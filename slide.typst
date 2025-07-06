@@ -4,6 +4,8 @@
   margin: 0.5in,
 )
 
+#set text(font: "Mona Sans", size: 20pt)
+
 #show heading: it => [
   #set text(33pt)
   #text(it.body, font: "Mona Sans")
