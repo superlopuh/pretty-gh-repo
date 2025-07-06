@@ -6,35 +6,49 @@
 
 #set text(font: "Mona Sans", size: 20pt)
 
-#let repo = json("repos/xdslproject/xdsl-asl/repo.json")
 #let config = yaml("default.yaml")
 
-#set text(font: "Mona Sans", size: 33pt)
-#pad[
-  *#repo.full_name * #h(1fr) #repo.stars ⭐️
-]
+#let show_repo(repo_path) = {
+  let repo = json("repos/" + repo_path + "/repo.json")
 
-#set text(font: "Mona Sans", size: 20pt)
+  set text(font: "Mona Sans", size: 33pt)
+  pad[
+    *#repo.full_name * #h(1fr) #repo.stars ⭐️
+  ]
 
-#grid(
-  columns: 2,
-  column-gutter: 1fr,
-)[
-  _#repo.description _
+  set text(font: "Mona Sans", size: 20pt)
 
-  In the last 6 months:
+  grid(
+    columns: 2,
+    column-gutter: 1fr,
+  )[
+    _#repo.description _
 
-  - #repo.commit_count commits
-][
-  #for author in repo.authors {
-    stack(dir: ltr, box(clip: true, radius: 1cm, width: 2cm, height: 2cm, image("avatars/" + author)), align(
-      horizon,
-    )[#text(
-        "   @" + author,
-        font: "Mona Sans",
-      )])
-  }
-]
+    In the last 6 months:
+
+    - #repo.commit_count commits
+  ][
+    #for author in repo.authors {
+      stack(dir: ltr, box(clip: true, radius: 1cm, width: 2cm, height: 2cm, image("avatars/" + author)), align(
+        horizon,
+      )[#text(
+          "   @" + author,
+          font: "Mona Sans",
+        )])
+    }
+  ]
+}
+
+#show_repo("xdslproject/xdsl-asl")
+#pagebreak()
+#show_repo("xdslproject/xdsl-torch")
+#pagebreak()
+#show_repo("xdslproject/tenstorrent")
+#pagebreak()
+#show_repo("xdslproject/inconspiquous")
+#pagebreak()
+#show_repo("xdslproject/xdsl")
+#pagebreak()
 
 
 
