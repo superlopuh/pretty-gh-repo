@@ -6,18 +6,17 @@
 
 #set text(font: "Mona Sans", size: 20pt)
 
-#show heading: it => [
-  #set text(33pt)
-  #text(it.body, font: "Mona Sans")
-]
 
 #let repo = json("repos/xdslproject/xdsl-torch/repo.json")
 
-= #repo.full_name
+#set text(font: "Mona Sans", size: 33pt)
+#pad[
+  *#repo.full_name #h(1fr) #repo.stars ⭐️*
+]
+
+#set text(font: "Mona Sans", size: 20pt)
 
 _#repo.description _
-
-*#repo.stars ⭐️*
 
 *#repo.commit_count commits*
 
