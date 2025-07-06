@@ -17,3 +17,9 @@ rule recent_commits:
     output: "repos/{org}/{name}/recent_commits.json"
     shell:
         "jq '[.[] | .[] | select(.commit.author.date > {MIN_DATE})]' {input} > {output}"
+
+rule repo:
+    input: "repos/{org}/{name}/recent_commits.json"
+    output: "repos/{org}/{name}/repo.json"
+    shell:
+        "jq -f repo.jq {input} > {output}"
