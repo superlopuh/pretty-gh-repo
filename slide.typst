@@ -16,18 +16,26 @@
 
 #set text(font: "Mona Sans", size: 20pt)
 
-_#repo.description _
+#grid(
+  columns: 2,
+  column-gutter: 1fr,
+)[
+  _#repo.description _
 
-*#repo.commit_count commits*
+  *#repo.commit_count commits*
+][
+  #for author in repo.authors {
+    stack(dir: ltr, box(clip: true, radius: 1cm, width: 2cm, height: 2cm, image("avatars/" + author)), align(
+      horizon,
+    )[#text(
+        "   @" + author,
+        font: "Mona Sans",
+      )])
+  }
+]
 
-#for author in repo.authors {
-  stack(dir: ltr, box(clip: true, radius: 1cm, width: 2cm, height: 2cm, image("avatars/" + author)), align(
-    horizon,
-  )[#text(
-      "   @" + author,
-      font: "Mona Sans",
-    )])
-}
+
+
 
 // Number of releases
 // High-level description
