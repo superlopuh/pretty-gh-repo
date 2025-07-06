@@ -2,11 +2,11 @@ configfile: "default.yaml"
 
 rule all:
     input:
-        "repos/xdslproject/inconspiquous/slide.png",
-        "repos/xdslproject/tenstorrent/slide.png",
-        "repos/xdslproject/xdsl-asl/slide.png",
-        "repos/xdslproject/xdsl-torch/slide.png",
-        "repos/xdslproject/xdsl/slide.png",
+        "slides/xdslproject_inconspiquous.png",
+        "slides/xdslproject_tenstorrent.png",
+        "slides/xdslproject_xdsl-asl.png",
+        "slides/xdslproject_xdsl-torch.png",
+        "slides/xdslproject_xdsl.png",
 
 rule avatar:
     output: "avatars/{username}"
@@ -74,3 +74,8 @@ rule slide_png:
     input: "repos/{org}/{name}/slide.typ"
     output: "repos/{org}/{name}/slide.png"
     shell: "typst compile repos/{wildcards.org}/{wildcards.name}/slide.typ --root . --format png"
+
+rule moved_slide:
+    input: "repos/{org}/{name}/slide.png"
+    output: "slides/{org}_{name}.png"
+    shell: "cp {input} {output}"
