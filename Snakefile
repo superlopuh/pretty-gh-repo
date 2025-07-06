@@ -1,4 +1,10 @@
 
+rule all:
+    input:
+        "repos/xdslproject/inconspiquous/avatars.done",
+        "repos/xdslproject/xdsl/avatars.done",
+        "repos/xdslproject/xdsl-torch/avatars.done"
+
 rule avatar:
     output: "avatars/{username}"
     shell:
@@ -13,6 +19,11 @@ rule stars:
     output: "repos/{org}/{name}/info.json"
     shell:
         "gh api repos/{wildcards.org}/{wildcards.name} | jq > {output}"
+
+rule releases:
+    output: "repos/{org}/{name}/releases.json"
+    shell:
+        "gh api repos/{wildcards.org}/{wildcards.name}/releases | jq > {output}"
 
 # Six months ago, update this value when re-generating
 MIN_DATE = "2025-01-04"
