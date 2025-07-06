@@ -70,7 +70,9 @@
   set text(font: "Mona Sans", size: 20pt)
 
   grid(
-    columns: (1fr, 8cm),
+    align: horizon,
+    columns: (4fr, 8cm),
+    rows: (4fr, 1fr),
     column-gutter: 1fr,
   )[
     _#repo.description _
