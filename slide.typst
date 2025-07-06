@@ -7,6 +7,18 @@
 #set text(font: "Mona Sans", size: 20pt)
 
 #let config = yaml("default.yaml")
+
+#let show_authors(repo) = {
+  for author in repo.authors {
+    stack(dir: ltr, box(clip: true, radius: 1cm, width: 2cm, height: 2cm, image("avatars/" + author)), align(
+      horizon,
+    )[#text(
+        "   @" + author,
+        font: "Mona Sans",
+      )])
+  }
+}
+
 #let show_repo(repo_path) = {
   let repo = json("repos/" + repo_path + "/repo.json")
 
@@ -27,14 +39,7 @@
 
     - #repo.commit_count commits
   ][
-    #for author in repo.authors {
-      stack(dir: ltr, box(clip: true, radius: 1cm, width: 2cm, height: 2cm, image("avatars/" + author)), align(
-        horizon,
-      )[#text(
-          "   @" + author,
-          font: "Mona Sans",
-        )])
-    }
+    #show_authors(repo)
   ]
 }
 
