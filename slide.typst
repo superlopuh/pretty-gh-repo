@@ -23,7 +23,9 @@
 )[
   _#repo.description _
 
-  *#repo.commit_count commits*
+  In the last 6 months:
+
+  - #repo.commit_count commits
 ][
   #for author in repo.authors {
     stack(dir: ltr, box(clip: true, radius: 1cm, width: 2cm, height: 2cm, image("avatars/" + author)), align(
