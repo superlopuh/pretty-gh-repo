@@ -4,7 +4,8 @@ rule all:
     input:
         "repos/xdslproject/inconspiquous/avatars.done",
         "repos/xdslproject/xdsl/avatars.done",
-        "repos/xdslproject/xdsl-torch/avatars.done"
+        "repos/xdslproject/xdsl-torch/avatars.done",
+        "repos/xdslproject/tenstorrent/avatars.done"
 
 rule avatar:
     output: "avatars/{username}"
