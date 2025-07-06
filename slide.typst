@@ -1,0 +1,24 @@
+#set page(
+  width: 13.33in,
+  height: 7.5in,
+  margin: 0.5in,
+)
+
+#show heading: it => [
+  #set text(33pt)
+  #text(it.body, font: "Mona Sans")
+]
+
+#let repo = json("repos/xdslproject/xdsl-torch/repo.json")
+
+= xdslproject/xdsl-torch
+
+*#repo.stars ⭐️*
+
+#stack(spacing: 0.5cm, for author in repo.authors {
+  box(clip: true, radius: 1cm, width: 2cm, height: 2cm, image(format: "jpg", "avatars/" + author + ".png"))
+  text("@" + author, font: "Mona Sans")
+})
+
+// Number of commits, releases
+// High-level description
