@@ -1,8 +1,8 @@
 
 rule avatar:
-    output: "avatars/{username}.png"
+    output: "avatars/{username}"
     shell:
-        "curl -L https://github.com/{wildcards.username}.png -o {output}"
+        "gh api users/{wildcards.username} --jq '.avatar_url' | xargs curl -L -o {output}"
 
 rule all_commits:
     output: "repos/{org}/{name}/all_commits.json"
@@ -36,4 +36,4 @@ rule author_avatars:
     input: "repos/{org}/{name}/repo.json"
     output: "repos/{org}/{name}/avatars.done"
     shell:
-        "snakemake --cores all $(jq -r '.authors | .[] | \"avatars/\" + . + \".png\"' {input} | tr '\\n' ' ') && touch {output}"
+        "snakemake --cores all $(jq -r '.authors | .[] | \"avatars/\" + .' {input} | tr '\\n' ' ') && touch {output}"

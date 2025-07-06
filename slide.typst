@@ -20,14 +20,12 @@
 #repo.commit_count commits
 
 #for author in repo.authors {
-  stack(
-    dir: ltr,
-    box(clip: true, radius: 1cm, width: 2cm, height: 2cm, image(format: "jpg", "avatars/" + author + ".png")),
-    align(horizon)[#text(
-        "   @" + author,
-        font: "Mona Sans",
-      )],
-  )
+  stack(dir: ltr, box(clip: true, radius: 1cm, width: 2cm, height: 2cm, image("avatars/" + author)), align(
+    horizon,
+  )[#text(
+      "   @" + author,
+      font: "Mona Sans",
+    )])
 }
 
 // Number of releases
