@@ -1,11 +1,3 @@
-#set page(
-  width: 13.33in,
-  height: 7.5in,
-  margin: 0.5in,
-)
-
-#set text(font: "Mona Sans", size: 20pt)
-
 #let config = yaml("default.yaml")
 
 #let show_authors(repo) = {
@@ -90,19 +82,3 @@
     #show_authors(repo)
   ]
 }
-
-#show_repo("xdslproject/xdsl-asl")
-#pagebreak()
-#show_repo("xdslproject/xdsl-torch")
-#pagebreak()
-#show_repo("xdslproject/tenstorrent")
-#pagebreak()
-#show_repo("xdslproject/inconspiquous")
-#pagebreak()
-#show_repo("xdslproject/xdsl")
-
-
-
-
-// Number of releases
-// High-level description
