@@ -71,9 +71,11 @@ EOL
 """
 
 rule slide_png:
-    input: "repos/{org}/{name}/slide.typ"
+    input:
+        slide="repos/{org}/{name}/slide.typ",
+        repo="repo.typ",
     output: "repos/{org}/{name}/slide.png"
-    shell: "typst compile repos/{wildcards.org}/{wildcards.name}/slide.typ --root . --format png"
+    shell: "typst compile {input.slide} --root . --format png"
 
 rule moved_slide:
     input: "repos/{org}/{name}/slide.png"
