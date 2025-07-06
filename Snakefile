@@ -9,6 +9,11 @@ rule all_commits:
     shell:
         "gh api repos/{wildcards.org}/{wildcards.name}/commits --paginate --slurp | jq > {output}"
 
+rule stars:
+    output: "repos/{org}/{name}/info.json"
+    shell:
+        "gh api repos/{wildcards.org}/{wildcards.name} | jq > {output}"
+
 # Six months ago, update this value when re-generating
 MIN_DATE = "2025-01-04"
 
@@ -21,10 +26,11 @@ rule recent_commits:
 rule repo:
     input:
         recent_commits="repos/{org}/{name}/recent_commits.json",
+        info="repos/{org}/{name}/info.json",
         jq_script="repo.jq"
     output: "repos/{org}/{name}/repo.json"
     shell:
-        "jq -f repo.jq {input.recent_commits} > {output}"
+        "jq -f repo.jq --slurp {input.recent_commits} {input.info} > {output}"
 
 rule author_avatars:
     input: "repos/{org}/{name}/repo.json"
