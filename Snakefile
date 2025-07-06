@@ -34,7 +34,7 @@ rule recent_commits:
     params:
         min_date=config["min_date"]
     shell:
-        "jq '[.[] | .[] | select(.commit.author.date > {params.min_date})]' {input} > {output}"
+        "jq '[.[] | .[] | select(.commit.author.date > \"{params.min_date}\")]' {input} > {output}"
 
 rule repo:
     input:

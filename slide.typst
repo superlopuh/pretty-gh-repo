@@ -7,7 +7,6 @@
 #set text(font: "Mona Sans", size: 20pt)
 
 #let config = yaml("default.yaml")
-
 #let show_repo(repo_path) = {
   let repo = json("repos/" + repo_path + "/repo.json")
 

@@ -3,11 +3,10 @@
   "description": "A testing ground for quantum computing compilation ideas in xdsl",
   "authors": [
     "alexarice",
-    "kimworrall",
     "poig",
     "Gopal-Dahale",
     "Gmin2"
   ],
-  "commit_count": 133,
+  "commit_count": 65,
   "stars": 8
 }
