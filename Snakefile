@@ -1,3 +1,4 @@
+configfile: "default.yaml"
 
 rule all:
     input:
@@ -25,14 +26,13 @@ rule releases:
     shell:
         "gh api repos/{wildcards.org}/{wildcards.name}/releases | jq > {output}"
 
-# Six months ago, update this value when re-generating
-MIN_DATE = "2025-01-04"
-
 rule recent_commits:
     input: "repos/{org}/{name}/all_commits.json"
     output: "repos/{org}/{name}/recent_commits.json"
+    params:
+        min_date=config["min_date"]
     shell:
-        "jq '[.[] | .[] | select(.commit.author.date > {MIN_DATE})]' {input} > {output}"
+        "jq '[.[] | .[] | select(.commit.author.date > {params.min_date})]' {input} > {output}"
 
 rule repo:
     input:
