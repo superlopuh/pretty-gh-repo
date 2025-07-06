@@ -70,7 +70,7 @@
   set text(font: "Mona Sans", size: 20pt)
 
   grid(
-    columns: 2,
+    columns: (1fr, 8cm),
     column-gutter: 1fr,
   )[
     _#repo.description _
