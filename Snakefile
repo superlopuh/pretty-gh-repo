@@ -7,6 +7,7 @@ rule all:
         "slides/xdslproject_xdsl-asl.png",
         "slides/xdslproject_xdsl-torch.png",
         "slides/xdslproject_xdsl.png",
+        "slides/xdslproject_xdsl-jax.png",
 
 rule avatar:
     output: "avatars/{username}"

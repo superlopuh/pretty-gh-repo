@@ -17,6 +17,8 @@
 #show_repo("xdslproject/inconspiquous")
 #pagebreak()
 #show_repo("xdslproject/xdsl")
+#pagebreak()
+#show_repo("xdslproject/xdsl-jax")
 
 // Number of releases
 // High-level description

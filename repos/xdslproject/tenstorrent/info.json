@@ -3,7 +3,7 @@
   "node_id": "R_kgDONKN6yw",
   "name": "tenstorrent",
   "full_name": "xdslproject/tenstorrent",
-  "private": false,
+  "private": true,
   "owner": {
     "login": "xdslproject",
     "id": 87819669,
@@ -26,7 +26,7 @@
     "site_admin": false
   },
   "html_url": "https://github.com/xdslproject/tenstorrent",
-  "description": "Support for programming Tenstorrent Tensix family using xDSL",
+  "description": "Support for programming Tenstorrent Tensix family using xDSL.",
   "fork": false,
   "url": "https://api.github.com/repos/xdslproject/tenstorrent",
   "forks_url": "https://api.github.com/repos/xdslproject/tenstorrent/forks",
@@ -66,16 +66,16 @@
   "releases_url": "https://api.github.com/repos/xdslproject/tenstorrent/releases{/id}",
   "deployments_url": "https://api.github.com/repos/xdslproject/tenstorrent/deployments",
   "created_at": "2024-11-04T12:32:15Z",
-  "updated_at": "2025-06-08T17:46:14Z",
-  "pushed_at": "2025-05-23T01:39:08Z",
+  "updated_at": "2025-10-13T22:31:53Z",
+  "pushed_at": "2025-12-24T20:57:45Z",
   "git_url": "git://github.com/xdslproject/tenstorrent.git",
   "ssh_url": "git@github.com:xdslproject/tenstorrent.git",
   "clone_url": "https://github.com/xdslproject/tenstorrent.git",
   "svn_url": "https://github.com/xdslproject/tenstorrent",
-  "homepage": null,
-  "size": 526,
-  "stargazers_count": 5,
-  "watchers_count": 5,
+  "homepage": "",
+  "size": 964,
+  "stargazers_count": 2,
+  "watchers_count": 2,
   "language": "Python",
   "has_issues": true,
   "has_projects": true,
@@ -87,7 +87,7 @@
   "mirror_url": null,
   "archived": false,
   "disabled": false,
-  "open_issues_count": 3,
+  "open_issues_count": 0,
   "license": {
     "key": "bsd-3-clause",
     "name": "BSD 3-Clause \"New\" or \"Revised\" License",
@@ -95,14 +95,14 @@
     "url": "https://api.github.com/licenses/bsd-3-clause",
     "node_id": "MDc6TGljZW5zZTU="
   },
-  "allow_forking": true,
+  "allow_forking": false,
   "is_template": false,
   "web_commit_signoff_required": false,
   "topics": [],
-  "visibility": "public",
+  "visibility": "private",
   "forks": 0,
-  "open_issues": 3,
-  "watchers": 5,
+  "open_issues": 0,
+  "watchers": 2,
   "default_branch": "main",
   "permissions": {
     "admin": true,
@@ -111,7 +111,7 @@
     "triage": true,
     "pull": true
   },
-  "temp_clone_token": "",
+  "temp_clone_token": "AAG6H4GHBX4MA72QSYI7L2LJMEDC2",
   "allow_squash_merge": true,
   "allow_merge_commit": true,
   "allow_rebase_merge": true,
@@ -146,6 +146,9 @@
     "site_admin": false
   },
   "security_and_analysis": {
+    "code_security": {
+      "status": "disabled"
+    },
     "secret_scanning": {
       "status": "disabled"
     },
@@ -163,5 +166,5 @@
     }
   },
   "network_count": 0,
-  "subscribers_count": 4
+  "subscribers_count": 3
 }
