@@ -50,6 +50,34 @@ rule recent_prs:
     shell:
         "jq '[.[] | .[] | select(.created_at > \"{params.min_pr_date}\")]' {input} > {output}"
 
+rule recent_pr_start_end_times:
+    input: "repos/{org}/{name}/recent_prs.json"
+    output: "repos/{org}/{name}/recent_pr_start_end_times.jsonl"
+    shell:
+        (
+            "jq -c '.[] | {{start: .created_at, end: .closed_at}}' {input} > {output}"
+        )
+
+rule pr_median_time:
+    input:
+        "repos/{org}/{name}/recent_prs.json"
+    output:
+        "repos/{org}/{name}/pr_median_time.json"
+    run:
+        import pandas as pd
+
+        df = pd.read_json(input[0], convert_dates=["created_at", "closed_at"])
+        num_closed = int(df["closed_at"].notna().sum())
+        df["closed_at"] = df["closed_at"].fillna(pd.Timestamp.now("UTC"))
+        df["close_time_hours"] = (df["closed_at"] - df["created_at"]).dt.total_seconds() / 3600
+
+        res = {
+            "median_close_time_hours": round(df["close_time_hours"].median(), 2),
+            "num_closed": num_closed,
+            "num_total": len(df),
+        }
+        pd.Series(res).to_json(output[0], indent=2)
+
 rule repo:
     input:
         recent_commits="repos/{org}/{name}/recent_commits.json",
