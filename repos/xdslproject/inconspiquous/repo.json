@@ -1,7 +1,7 @@
 {
   "full_name": "xdslproject/inconspiquous",
   "description": "A testing ground for quantum computing compilation ideas in xdsl",
-  "recent_contributor_count": 4,
+  "recent_contributor_count": 1,
   "all_contributors": [
     "alexarice",
     "kimworrall",
@@ -9,6 +9,6 @@
     "Gopal-Dahale",
     "Gmin2"
   ],
-  "commit_count": 116,
+  "commit_count": 78,
   "stars": 12
 }

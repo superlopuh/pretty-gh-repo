@@ -117,6 +117,7 @@ rule slide_png:
     input:
         slide="repos/{org}/{name}/slide.typ",
         repo="repo.typ",
+        pr_median_time="repos/{org}/{name}/pr_median_time.json",
     output: "repos/{org}/{name}/slide.png"
     shell: "typst compile {input.slide} --root . --format png"
 

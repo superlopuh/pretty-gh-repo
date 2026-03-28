@@ -52,15 +52,25 @@
       stack(dir: ltr, box(clip: true, radius: 1cm, width: 2cm, height: 2cm, image("avatars/" + author)), align(
         horizon,
       )[#text(
-          "   @" + author,
-          font: "Mona Sans",
-        )])
+        "   @" + author,
+        font: "Mona Sans",
+      )])
     }
+  }
+}
+
+#let format_hours(h) = {
+  if h < 24 {
+    str(calc.round(h, digits: 1)) + "h"
+  } else {
+    let days = calc.round(h / 24, digits: 1)
+    str(days) + "d"
   }
 }
 
 #let show_repo(repo_path) = {
   let repo = json("repos/" + repo_path + "/repo.json")
+  let pr_stats = json("repos/" + repo_path + "/pr_median_time.json")
 
   set text(font: "Mona Sans", size: 33pt)
   pad[
@@ -81,6 +91,7 @@
 
     - #repo.commit_count commits
     - #repo.recent_contributor_count Contributors
+    - Median PR close time: #format_hours(pr_stats.median_close_time_hours)
   ][
     #show_authors(repo)
   ]

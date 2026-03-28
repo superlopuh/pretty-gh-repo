@@ -1,12 +1,14 @@
 {
   "full_name": "xdslproject/xdsl-jax",
   "description": "Extending JAX with xDSL.",
-  "recent_contributor_count": 3,
+  "recent_contributor_count": 4,
   "all_contributors": [
+    "mehrdad2m",
     "superlopuh",
     "EdmundGoodman",
+    "mudit2812",
     "Hatsunespica"
   ],
-  "commit_count": 92,
-  "stars": 3
+  "commit_count": 88,
+  "stars": 4
 }
