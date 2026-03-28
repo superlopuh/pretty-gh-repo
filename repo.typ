@@ -90,7 +90,7 @@
     In the last 6 months:
 
     - #repo.commit_count commits
-    - #repo.recent_contributor_count Contributors
+    - #repo.recent_contributor_count contributors
     - Median PR close time: #format_hours(pr_stats.median_close_time_hours)
   ][
     #show_authors(repo)
