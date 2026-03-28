@@ -1,5 +1,16 @@
 #let config = yaml("default.yaml")
 
+#let parse_date(s) = {
+  let parts = str(s).split("-")
+  datetime(year: int(parts.at(0)), month: int(parts.at(1)), day: int(parts.at(2)))
+}
+
+#let days_in_range = {
+  let start = parse_date(config.min_date)
+  let end = datetime.today()
+  (end - start).days()
+}
+
 #let show_authors(repo) = {
   if repo.all_contributors.len() > 5 {
     // The icons + names don't all fit, drop names and tile space with circles
@@ -89,7 +100,7 @@
 
     In the last 6 months:
 
-    - #repo.commit_count commits
+    - #repo.commit_count commits (#str(calc.round(repo.commit_count / days_in_range, digits: 1))/day)
     - #repo.recent_contributor_count contributors
     - Median PR close time: #format_hours(pr_stats.median_close_time_hours)
   ][
