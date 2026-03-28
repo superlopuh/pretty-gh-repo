@@ -1,5 +1,9 @@
 configfile: "default.yaml"
 
+from datetime import date, timedelta
+GENERATION_DATE = date.fromisoformat(config["generation_date"])
+MIN_DATE = (GENERATION_DATE - timedelta(days=config["lookback_days"])).isoformat()
+
 rule all:
     input:
         "slides/xdslproject_inconspiquous.png",
@@ -38,7 +42,7 @@ rule recent_commits:
     input: "repos/{org}/{name}/all_commits.json"
     output: "repos/{org}/{name}/recent_commits.json"
     params:
-        min_date=config["min_date"]
+        min_date=MIN_DATE
     shell:
         "jq '[.[] | .[] | select(.commit.author.date > \"{params.min_date}\")]' {input} > {output}"
 
@@ -46,9 +50,9 @@ rule recent_prs:
     input: "repos/{org}/{name}/all_prs.json"
     output: "repos/{org}/{name}/recent_prs.json"
     params:
-        min_pr_date=config["min_date"]
+        min_date=MIN_DATE
     shell:
-        "jq '[.[] | .[] | select(.created_at > \"{params.min_pr_date}\")]' {input} > {output}"
+        "jq '[.[] | .[] | select(.created_at > \"{params.min_date}\")]' {input} > {output}"
 
 rule recent_pr_start_end_times:
     input: "repos/{org}/{name}/recent_prs.json"
