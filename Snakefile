@@ -19,6 +19,11 @@ rule all_commits:
     shell:
         "gh api repos/{wildcards.org}/{wildcards.name}/commits --paginate --slurp | jq > {output}"
 
+rule all_prs:
+    output: "repos/{org}/{name}/all_prs.json"
+    shell:
+        "gh api 'repos/{wildcards.org}/{wildcards.name}/pulls?state=all' --paginate --slurp | jq > {output}"
+
 rule stars:
     output: "repos/{org}/{name}/info.json"
     shell:
@@ -36,6 +41,14 @@ rule recent_commits:
         min_date=config["min_date"]
     shell:
         "jq '[.[] | .[] | select(.commit.author.date > \"{params.min_date}\")]' {input} > {output}"
+
+rule recent_prs:
+    input: "repos/{org}/{name}/all_prs.json"
+    output: "repos/{org}/{name}/recent_prs.json"
+    params:
+        min_pr_date=config["min_date"]
+    shell:
+        "jq '[.[] | .[] | select(.created_at > \"{params.min_pr_date}\")]' {input} > {output}"
 
 rule repo:
     input:

@@ -215,3 +215,5 @@ __marimo__/
 # Large JSON files
 all_commits.json
 recent_commits.json
+all_prs.json
+recent_prs.json
