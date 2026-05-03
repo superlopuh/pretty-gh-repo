@@ -88,7 +88,7 @@
   )[
     _#repo.description _
 
-    In the last 6 months:
+    In the last #lookback_days days:
 
     - #repo.commit_count commits (#str(calc.round(repo.commit_count / lookback_days, digits: 1))/day)
     - #repo.recent_contributor_count contributors
