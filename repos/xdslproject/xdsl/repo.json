@@ -1,7 +1,7 @@
 {
   "full_name": "xdslproject/xdsl",
   "description": "A Python compiler design toolkit.",
-  "recent_contributor_count": 35,
+  "recent_contributor_count": 68,
   "all_contributors": [
     "superlopuh",
     "math-fehr",
@@ -123,6 +123,6 @@
     "HendrikKlug-synthara",
     "Fidget-Spinner"
   ],
-  "commit_count": 303,
+  "commit_count": 1291,
   "stars": 503
 }

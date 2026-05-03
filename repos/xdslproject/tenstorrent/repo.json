@@ -1,11 +1,11 @@
 {
   "full_name": "xdslproject/tenstorrent",
   "description": "Support for programming Tenstorrent Tensix family using xDSL.",
-  "recent_contributor_count": 1,
+  "recent_contributor_count": 2,
   "all_contributors": [
     "jakedves",
     "mesham"
   ],
-  "commit_count": 378,
+  "commit_count": 567,
   "stars": 2
 }
